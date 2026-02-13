@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>サービス紹介・制作事例 | L.E.O.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --dark-matter: #0B0C10;
+      --dark-surface: #111318;
+      --dark-card: #161921;
+      --neon-cyan: #66FCF1;
+      --cyan-mid: #45A29E;
+      --pulse-red: #FF2E63;
+      --vitality-orange: #F05454;
+      --text-white: #F2F2F2;
+      --text-grey: #8892A4;
+      --card-border: rgba(102, 252, 241, 0.08);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Noto Sans JP', sans-serif;
+      background: var(--dark-matter);
+      color: var(--text-white);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      padding: 56px 24px 40px;
+      text-align: center;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -60%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(102,252,241,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      padding: 6px 20px;
+      border: 1px solid var(--neon-cyan);
+      border-radius: 50px;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 11px;
+      letter-spacing: 3px;
+      color: var(--neon-cyan);
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 {
+      font-size: 28px;
+      font-weight: 900;
+      line-height: 1.5;
+      margin-bottom: 16px;
+    }
+    .hero h1 span { color: var(--neon-cyan); }
+
+    .hero p {
+      color: var(--text-grey);
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    /* Section */
+    .section {
+      padding: 48px 20px;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 22px;
+      font-weight: 900;
+      margin-bottom: 32px;
+    }
+    .section-title span { color: var(--neon-cyan); }
+
+    /* Service Card */
+    .service-card {
+      background: var(--dark-card);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 32px 24px;
+      margin-bottom: 20px;
+      position: relative;
+      overflow: hidden;
+    }
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+    }
+    .service-card:nth-child(1)::before { background: var(--neon-cyan); }
+    .service-card:nth-child(2)::before { background: var(--pulse-red); }
+    .service-card:nth-child(3)::before { background: var(--vitality-orange); }
+
+    .service-icon {
+      font-size: 36px;
+      margin-bottom: 16px;
+    }
+
+    .service-card h2 {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .service-card p {
+      color: var(--text-grey);
+      font-size: 14px;
+      margin-bottom: 16px;
+    }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+
+    .tag {
+      padding: 4px 14px;
+      border-radius: 50px;
+      font-size: 12px;
+      font-weight: 500;
+    }
+
+    .service-card:nth-child(1) .tag {
+      border: 1px solid rgba(102,252,241,0.3);
+      color: var(--neon-cyan);
+    }
+    .service-card:nth-child(2) .tag {
+      border: 1px solid rgba(255,46,99,0.3);
+      color: var(--pulse-red);
+    }
+    .service-card:nth-child(3) .tag {
+      border: 1px solid rgba(240,84,84,0.3);
+      color: var(--vitality-orange);
+    }
+
+    .price-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .price-box {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 10px;
+      padding: 14px 16px;
+    }
+
+    .price-label {
+      font-size: 11px;
+      color: var(--text-grey);
+      margin-bottom: 4px;
+    }
+
+    .price-value {
+      font-size: 18px;
+      font-weight: 700;
+    }
+    .price-value small {
+      font-size: 12px;
+      font-weight: 400;
+      color: var(--text-grey);
+    }
+
+    /* Steps */
+    .steps { padding: 48px 20px; }
+
+    .step-item {
+      position: relative;
+      padding-left: 28px;
+      padding-bottom: 32px;
+      border-left: 2px solid rgba(102,252,241,0.15);
+    }
+    .step-item:last-child {
+      border-left-color: transparent;
+      padding-bottom: 0;
+    }
+    .step-item::before {
+      content: '';
+      position: absolute;
+      left: -6px;
+      top: 4px;
+      width: 10px;
+      height: 10px;
+      background: var(--neon-cyan);
+      border-radius: 50%;
+    }
+
+    .step-num {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 11px;
+      letter-spacing: 2px;
+      color: var(--neon-cyan);
+      margin-bottom: 4px;
+    }
+
+    .step-item h3 {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    .step-item p {
+      font-size: 13px;
+      color: var(--text-grey);
+    }
+
+    /* ===== 制作事例セクション ===== */
+    .cases-section {
+      padding: 56px 20px 32px;
+    }
+
+    .cases-category {
+      margin-bottom: 48px;
+    }
+
+    .category-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(102,252,241,0.12);
+    }
+
+    .category-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+    .cat-line .category-icon { background: rgba(102,252,241,0.1); }
+    .cat-biz .category-icon { background: rgba(240,84,84,0.1); }
+    .cat-fun .category-icon { background: rgba(255,46,99,0.1); }
+
+    .category-header h3 {
+      font-size: 16px;
+      font-weight: 700;
+    }
+    .category-header .cat-sub {
+      font-size: 12px;
+      color: var(--text-grey);
+      font-weight: 400;
+    }
+
+    /* Case Card */
+    .case-card {
+      background: var(--dark-card);
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      padding: 24px 20px;
+      margin-bottom: 14px;
+      transition: border-color 0.3s;
+    }
+    .case-card:hover {
+      border-color: rgba(102,252,241,0.2);
+    }
+
+    .case-card-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+
+    .case-card h4 {
+      font-size: 15px;
+      font-weight: 700;
+    }
+
+    .case-status {
+      font-size: 10px;
+      padding: 3px 10px;
+      border-radius: 50px;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+    }
+    .status-live {
+      background: rgba(102,252,241,0.1);
+      color: var(--neon-cyan);
+      border: 1px solid rgba(102,252,241,0.25);
+    }
+    .status-dev {
+      background: rgba(240,84,84,0.1);
+      color: var(--vitality-orange);
+      border: 1px solid rgba(240,84,84,0.25);
+    }
+    .status-coming {
+      background: rgba(255,255,255,0.05);
+      color: var(--text-grey);
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .case-card p {
+      font-size: 13px;
+      color: var(--text-grey);
+      margin-bottom: 12px;
+      line-height: 1.7;
+    }
+
+    .case-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .case-tag {
+      font-size: 11px;
+      padding: 3px 10px;
+      border-radius: 50px;
+      background: rgba(255,255,255,0.04);
+      color: var(--text-grey);
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .cat-line .case-tag {
+      background: rgba(102,252,241,0.05);
+      border-color: rgba(102,252,241,0.12);
+      color: rgba(102,252,241,0.7);
+    }
+    .cat-biz .case-tag {
+      background: rgba(240,84,84,0.05);
+      border-color: rgba(240,84,84,0.12);
+      color: rgba(240,84,84,0.7);
+    }
+    .cat-fun .case-tag {
+      background: rgba(255,46,99,0.05);
+      border-color: rgba(255,46,99,0.12);
+      color: rgba(255,46,99,0.7);
+    }
+
+    /* Divider */
+    .section-divider {
+      width: 60px;
+      height: 2px;
+      background: linear-gradient(90deg, var(--neon-cyan), transparent);
+      margin: 0 auto 48px;
+    }
+
+    /* CTA */
+    .cta {
+      text-align: center;
+      padding: 48px 24px;
+      background: var(--dark-surface);
+      border-top: 1px solid var(--card-border);
+    }
+    .cta h3 {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+    .cta p {
+      font-size: 14px;
+      color: var(--text-grey);
+      margin-bottom: 8px;
+      line-height: 1.8;
+    }
+    .cta .hint {
+      font-size: 13px;
+      color: var(--cyan-mid);
+      margin-top: 16px;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 32px 20px;
+      border-top: 1px solid rgba(255,255,255,0.04);
+    }
+    footer .logo {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--neon-cyan);
+      margin-bottom: 4px;
+    }
+    footer .tagline {
+      font-size: 11px;
+      color: var(--text-grey);
+      letter-spacing: 1px;
+    }
+
+    /* Animations */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate {
+      animation: fadeUp 0.6s ease forwards;
+      opacity: 0;
+    }
+    .delay-1 { animation-delay: 0.1s; }
+    .delay-2 { animation-delay: 0.2s; }
+    .delay-3 { animation-delay: 0.3s; }
+    .delay-4 { animation-delay: 0.4s; }
+  </style>
+</head>
+<body>
+
+  <!-- ========== HERO ========== -->
+  <section class="hero">
+    <div class="hero-badge animate">Services & Portfolio</div>
+    <h1 class="animate delay-1">AI<span>の力</span>を、<br>あなたのビジネスに。</h1>
+    <p class="animate delay-2">LINE公式Bot・Webチャットボット・業務自動化。<br>中小企業のための、手が届くAI導入支援。</p>
+  </section>
+
+  <!-- ========== SERVICES ========== -->
+  <section class="section">
+    <div class="service-card animate">
+      <div class="service-icon">📱</div>
+      <h2>LINE公式 × AIチャットボット</h2>
+      <p>お客様からの問い合わせに、AIが24時間自動で応答。予約受付・FAQ対応・来店後フォローまで、「仕組み」が回し続けます。</p>
+      <div class="tag-row">
+        <span class="tag">24時間自動応答</span>
+        <span class="tag">予約受付</span>
+        <span class="tag">フォロー配信</span>
+        <span class="tag">顧客データ蓄積</span>
+      </div>
+      <div class="price-row">
+        <div class="price-box">
+          <div class="price-label">初期費用</div>
+          <div class="price-value">15〜30<small>万円（税別）</small></div>
+        </div>
+        <div class="price-box">
+          <div class="price-label">月額</div>
+          <div class="price-value">2〜3<small>万円</small></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="service-card animate delay-1">
+      <div class="service-icon">💬</div>
+      <h2>Webチャットボット</h2>
+      <p>ホームページに埋め込むAI接客ボット。サイト訪問者の疑問をその場で解決し、離脱を防ぎます。</p>
+      <div class="tag-row">
+        <span class="tag">サイト埋め込み</span>
+        <span class="tag">AI接客</span>
+        <span class="tag">離脱防止</span>
+        <span class="tag">リード獲得</span>
+      </div>
+      <div class="price-row">
+        <div class="price-box">
+          <div class="price-label">初期費用</div>
+          <div class="price-value">15〜30<small>万円（税別）</small></div>
+        </div>
+        <div class="price-box">
+          <div class="price-label">月額</div>
+          <div class="price-value">2〜3<small>万円</small></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="service-card animate delay-2">
+      <div class="service-icon">⚡</div>
+      <h2>Dify 業務自動化</h2>
+      <p>問い合わせ対応、資料作成、データ整理。毎日の「同じ作業」を、AIが代わりにこなします。</p>
+      <div class="tag-row">
+        <span class="tag">問い合わせ自動化</span>
+        <span class="tag">資料作成</span>
+        <span class="tag">データ整理</span>
+        <span class="tag">社内ナレッジBot</span>
+      </div>
+      <div class="price-row">
+        <div class="price-box">
+          <div class="price-label">初期費用</div>
+          <div class="price-value">10〜20<small>万円（税別）</small></div>
+        </div>
+        <div class="price-box">
+          <div class="price-label">月額</div>
+          <div class="price-value">1〜2<small>万円</small></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 導入の流れ ========== -->
+  <section class="steps">
+    <h2 class="section-title">導入の<span>流れ</span></h2>
+
+    <div class="step-item animate">
+      <div class="step-num">STEP 01</div>
+      <h3>無料相談（30分）</h3>
+      <p>御社の課題をヒアリング。最適な仕組みをご提案します。</p>
+    </div>
+    <div class="step-item animate delay-1">
+      <div class="step-num">STEP 02</div>
+      <h3>設計・構築</h3>
+      <p>要件に合わせてBotやツールを構築。1〜3週間が目安です。</p>
+    </div>
+    <div class="step-item animate delay-2">
+      <div class="step-num">STEP 03</div>
+      <h3>テスト・納品</h3>
+      <p>実際の業務に合わせてテスト。問題なければ本稼働へ。</p>
+    </div>
+    <div class="step-item animate delay-3">
+      <div class="step-num">STEP 04</div>
+      <h3>運用サポート</h3>
+      <p>納品後もチューニングや改善をサポートし続けます。</p>
+    </div>
+  </section>
+
+  <!-- ========== 制作事例 ========== -->
+  <section class="cases-section">
+    <h2 class="section-title">制作<span>事例</span></h2>
+    <div class="section-divider"></div>
+
+    <!-- カテゴリ1: 公式LINE・顧客対応チャットボット -->
+    <div class="cases-category cat-line">
+      <div class="category-header">
+        <div class="category-icon">🤖</div>
+        <div>
+          <h3>公式LINE・顧客対応チャットボット</h3>
+          <div class="cat-sub">LINE Bot / Customer Support</div>
+        </div>
+      </div>
+
+      <div class="case-card">
+        <div class="case-card-top">
+          <h4>飲食店 × LINE予約Bot</h4>
+          <span class="case-status status-live">稼働中</span>
+        </div>
+        <p>LINE公式アカウントにAIチャットボットを導入。24時間の自動予約受付と来店後のフォロー配信を実現。電話対応の負担を大幅に削減。</p>
+        <div class="case-tags">
+          <span class="case-tag">LINE Bot</span>
+          <span class="case-tag">予約自動化</span>
+          <span class="case-tag">フォロー配信</span>
+        </div>
+      </div>
+
+      <div class="case-card">
+        <div class="case-card-top">
+          <h4>美容サロン × 顧客カルテBot</h4>
+          <span class="case-status status-live">稼働中</span>
+        </div>
+        <p>来店前のヒアリングをAIが自動実施。回答内容をカルテとして蓄積し、施術者に自動共有。接客品質の向上とリピート率アップに貢献。</p>
+        <div class="case-tags">
+          <span class="case-tag">自動ヒアリング</span>
+          <span class="case-tag">データ蓄積</span>
+          <span class="case-tag">顧客管理</span>
+        </div>
+      </div>
+
+      <div class="case-card">
+        <div class="case-card-top">
+          <h4>不動産 × 物件問い合わせBot</h4>
+          <span class="case-status status-coming">準備中</span>
+        </div>
+        <p>物件の条件ヒアリングから内見予約までをLINE上で完結。営業時間外の問い合わせ取りこぼしをゼロに。</p>
+        <div class="case-tags">
+          <span class="case-tag">FAQ自動応答</span>
+          <span class="case-tag">リード獲得</span>
+          <span class="case-tag">予約連携</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- カテゴリ2: 社内業務効率化アプリ -->
+    <div class="cases-category cat-biz">
+      <div class="category-header">
+        <div class="category-icon">⚙️</div>
+        <div>
+          <h3>社内業務効率化アプリ</h3>
+          <div class="cat-sub">Internal Tools / Automation</div>
+        </div>
+      </div>
+
+      <div class="case-card">
+        <div class="case-card-top">
+          <h4>社内ナレッジBot</h4>
+          <span class="case-status status-live">稼働中</span>
+        </div>
+        <p>社内マニュアルや規定をAIが学習。「有給の申請方法は？」「経費精算のフローは？」などの社内問い合わせに即座に回答。</p>
+        <div class="case-tags">
+          <span class="case-tag">Dify</span>
+          <span class="case-tag">RAG</span>
+          <span class="case-tag">社内FAQ</span>
+        </div>
+      </div>
+
+      <div class="case-card">
+        <div class="case-card-top">
+          <h4>レポート自動生成ツール</h4>
+          <span class="case-status status-dev">開発中</span>
+        </div>
+        <p>日次・週次の報告書をAIが自動作成。データを入力するだけで、定型フォーマットのレポートを瞬時に生成。</p>
+        <div class="case-tags">
+          <span class="case-tag">自動化</span>
+          <span class="case-tag">レポート生成</span>
+          <span class="case-tag">業務効率化</span>
+        </div>
+      </div>
+
+      <div class="case-card">
+        <div class="case-card-top">
+          <h4>議事録要約 × タスク抽出</h4>
+          <span class="case-status status-coming">準備中</span>
+        </div>
+        <p>会議の録音データから議事録を自動生成し、アクションアイテムを抽出。担当者への自動通知まで一気通貫。</p>
+        <div class="case-tags">
+          <span class="case-tag">音声認識</span>
+          <span class="case-tag">要約AI</span>
+          <span class="case-tag">タスク管理</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- カテゴリ3: ノリで開発したウェブアプリ -->
+    <div class="cases-category cat-fun">
+      <div class="category-header">
+        <div class="category-icon">🚀</div>
+        <div>
+          <h3>個人開発オリジナルアプリ</h3>
+          <div class="cat-sub">Original Apps</div>
+        </div>
+      </div>
+
+      <div class="case-card">
+        <div class="case-card-top">
+          <h4>Coming Soon...</h4>
+          <span class="case-status status-coming">準備中</span>
+        </div>
+        <p>「これがあったら便利かも」から生まれたアプリたちを順次公開予定。技術の引き出しとして、ぜひご覧ください。</p>
+        <div class="case-tags">
+          <span class="case-tag">AI</span>
+          <span class="case-tag">実験的</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CTA ========== -->
+  <section class="cta">
+    <h3>まずは話してみませんか？</h3>
+    <p>「AIって、うちでも使えるの？」<br>そんな疑問からでも大歓迎です。</p>
+    <div class="hint">📅 LINEメニューの「無料相談を予約する」から<br>お気軽にどうぞ</div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer>
+    <div class="logo">L.E.O.</div>
+    <div class="tagline">Tech for Life, Heat for All.</div>
+  </footer>
+
+</body>
+</html>
